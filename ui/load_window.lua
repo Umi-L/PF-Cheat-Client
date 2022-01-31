@@ -37,6 +37,9 @@ do
         config.aimbot.only_shoot_visible = state
     end)
     silentaim_sector:CreateSlider("headshot percentage", 0, 100, 20, true, function(state)
+        config.aimbot.headshot_percentage = state
+    end)
+    silentaim_sector:CreateSlider("hit percentage", 0, 100, 100, true, function(state)
         config.aimbot.hit_chance = state
     end)
     local fieldofview_sector = aimbot_tab:CreateSection("field of view")
