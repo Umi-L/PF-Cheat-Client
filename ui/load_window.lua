@@ -1,3 +1,5 @@
+local UIS = game:GetService("UserInputService")
+
 local window = library:CreateWindow(
     {
         WindowName = "purple haze - phantom forces",
@@ -15,7 +17,7 @@ do
     fov_circle.NumSides = 100
     fov_circle.Radius = 180
     fov_circle.Filled = false
-    fov_circle.Visible = false
+    fov_circle.Visible = true
     fov_circle.ZIndex = 999
     fov_circle.Transparency = 1
     fov_circle.Color = Color3.fromRGB(255, 255, 255)
@@ -28,23 +30,20 @@ do
     end)
     
     local silentaim_sector = aimbot_tab:CreateSection("silent aim")
-    silentaim_sector:CreateToggle("enabled", false, function(state)
+    silentaim_sector:CreateToggle("enabled", true, function(state)
         config.aimbot.silent_aim = state
     end)
-    silentaim_sector:CreateDropdown("hit part", {
-        "head",
-        "torso"
-    }, function(state)
-        config.aimbot.target_part = state
+    silentaim_sector:CreateToggle("only shoot visible", true, function(state)
+        config.aimbot.only_shoot_visible = state
     end)
-    silentaim_sector:CreateSlider("hit chance %", 0, 100, 100, true, function(state)
+    silentaim_sector:CreateSlider("headshot percentage", 0, 100, 20, true, function(state)
         config.aimbot.hit_chance = state
     end)
     local fieldofview_sector = aimbot_tab:CreateSection("field of view")
-    fieldofview_sector:CreateToggle("enabled", false, function(state)
+    fieldofview_sector:CreateToggle("enabled", true, function(state)
         config.aimbot.field_of_view = state
     end)
-    fieldofview_sector:CreateSlider("range", 0, 360, 180, true, function(state)
+    fieldofview_sector:CreateSlider("range", 0, 360, 20, true, function(state)
         config.aimbot.field_of_view_range = state
         fov_circle.Radius = state
     end)
@@ -63,6 +62,9 @@ do
     local gunmod_sector = aimbot_tab:CreateSection("gun mod")
     gunmod_sector:CreateToggle("fast reload", false, function(state)
         config.gunmod.fast_reload = state
+    end)
+    gunmod_sector:CreateSlider("fast reload speed", 0.01, 3, 0.3, false, function(state)
+        config.gunmod.fast_reload_speed = state
     end)
     gunmod_sector:CreateToggle("fast equip", false, function(state)
         config.gunmod.fast_equip = state
@@ -107,10 +109,27 @@ do
 end
 do
     local esp_sector = visuals_tab:CreateSection("esp")
-    esp_sector:CreateToggle("enabled", false, function(state)
+    esp_sector:CreateToggle("enabled", true, function(state)
         config.visuals.esp_enabled = state
+    end)
+    esp_sector:CreateColorpicker("color", function(state)
+        config.visuals.esp_colour = state
     end)
     esp_sector:CreateToggle("visible thru walls", false, function(state)
-        config.visuals.esp_enabled = state
+        config.visuals.esp_not_visible_shown = state
+    end)
+    esp_sector:CreateColorpicker("visible color", function(state)
+        config.visuals.esp_visible_colour = state
+    end)
+    esp_sector:CreateToggle("visible not thru walls", true, function(state)
+        config.visuals.esp_visible_shown = state
     end)
 end
+
+local windowVisible = true
+UIS.InputBegan:Connect(function(InputObject, Processed)
+	if InputObject.KeyCode == Enum.KeyCode.RightShift then
+        windowVisible = not windowVisible
+		window:Toggle(windowVisible)
+	end
+end)

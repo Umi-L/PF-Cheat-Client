@@ -1,3 +1,7 @@
+--[[
+    credits: B1luee22
+]]
+
 local e_plrlist
 local rs = game:GetService("RunService")
 

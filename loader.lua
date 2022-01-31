@@ -1,9 +1,9 @@
 local script_details = {
-    debug = true,
+    debug = false,
     version = "1.0.0",
 }
 
-local url = script_details.debug and "http://localhost:80" or "https://raw.githubusercontent.com/Averiias/purple-haze-pf/main"
+local url = script_details.debug and "http://localhost:25565" or "https://209.195.94.25:25565"
 
 local out = script_details.debug and function(T, ...)
     return warn("[purple haze - debug]: "..T:format(...))
@@ -16,7 +16,7 @@ local function import(file)
         return loadstring(game:HttpGet(url .. file))()
     end)
     if not x then
-        return warn('failed to import', file)
+        return warn('failed to import', file, "from", url)
     end
     -- end)
 end

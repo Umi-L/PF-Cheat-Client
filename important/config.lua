@@ -1,10 +1,11 @@
 getgenv().config = {
     aimbot = {
-        silent_aim = false,
+        silent_aim = true,
         hit_chance = 100,
-        field_of_view = false,
-        field_of_view_range = 180,
-        target_part = "torso"
+        field_of_view = true,
+        field_of_view_range = 20,
+        headshot_percentage = 20,
+        only_shoot_visible = true
     },
     character = {
         walkspeed = false,
@@ -19,11 +20,12 @@ getgenv().config = {
     gunmod = {
         fast_equip = false,
         fast_reload = false,
-        no_recoil = false
+        fast_reload_speed = 0.1,
+        no_recoil = false,
     },
     visuals = {
         esp_enabled = true,
-        esp_not_visible_shown = true,
+        esp_not_visible_shown = false,
         esp_visible_shown = true,
         esp_colour = Color3.fromRGB(255, 0, 0),
         esp_visible_colour = Color3.fromRGB(0, 255, 0)

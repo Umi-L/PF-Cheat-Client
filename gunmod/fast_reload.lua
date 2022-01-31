@@ -5,7 +5,7 @@ task.spawn(function()
                 if type(i) == "string" and i:lower():gmatch("reload") then
                     for d,k in next, v do
                         if type(k) == "table" then
-                            k.delay = 0.01
+                            k.delay = config.gunmod.fast_reload_speed
                         end
                     end
                 end
