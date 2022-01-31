@@ -53,7 +53,7 @@ do
     fieldofview_sector:CreateColorpicker("color", function(state)
         fov_circle.Color = state
     end)
-    fieldofview_sector:CreateToggle("visible", false, function(state)
+    fieldofview_sector:CreateToggle("visible", true, function(state)
         fov_circle.Visible = state
     end)
     fieldofview_sector:CreateToggle("filled", false, function(state)
