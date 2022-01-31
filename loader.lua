@@ -3,7 +3,7 @@ local script_details = {
     version = "1.0.0",
 }
 
-local url = script_details.debug and "http://localhost:25565" or "https://209.195.94.25:25565"
+local url = script_details.debug and "http://localhost:25565" or "https://raw.githubusercontent.com/Umi-L/PF-Cheat-Client/main"
 
 local out = script_details.debug and function(T, ...)
     return warn("[purple haze - debug]: "..T:format(...))
