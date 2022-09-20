@@ -28,6 +28,8 @@ getgenv().config = {
         esp_not_visible_shown = false,
         esp_visible_shown = true,
         esp_colour = Color3.fromRGB(255, 0, 0),
-        esp_visible_colour = Color3.fromRGB(0, 255, 0)
+        esp_visible_colour = Color3.fromRGB(0, 255, 0),
+        balistics_tracker_enabled = true,
+        balistics_tracker_visible_thru_walls = false,
     }
 }

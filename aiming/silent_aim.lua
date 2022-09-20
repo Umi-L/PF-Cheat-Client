@@ -73,7 +73,7 @@ MT.__index = newcclosure(function(self, K)
 
             if CharChosen then
                 local _, Time = Trajectory(self.Position, Vector3.new(0, -workspace.Gravity, 0), CharChosen.Position, GameLogic.currentgun.data.bulletspeed)
-                return CFrame.new(self.Position, CharChosen.Position + (Vector3.new(0, -workspace.Gravity / 2, 0)) * (Time ^ 2) + (CharChosen.Velocity * Time))
+                return CFrame.new(self.Position, CharChosen.Position + (Vector3.new(0, workspace.Gravity / 2, 0)) * (Time ^ 2) + (CharChosen.Velocity * Time))
             end
         end
     end

@@ -129,6 +129,18 @@ do
     end)
 end
 
+do
+    local balistics_sector = visuals_tab:CreateSection("Balistics Tracker")
+
+    balistics_sector:CreateToggle("enabled", true, function(state)
+        config.visuals.balistics_tracker_enabled = state
+    end)
+
+    balistics_sector:CreateToggle("Visible thru walls", false, function(state)
+        config.visuals.balistics_tracker_visible_thru_walls = state
+    end)
+end
+
 local windowVisible = true
 UIS.InputBegan:Connect(function(InputObject, Processed)
 	if InputObject.KeyCode == Enum.KeyCode.RightShift then

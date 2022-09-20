@@ -31,6 +31,7 @@ import('/gunmod/fast_reload.lua')
 -- import('/gunmod/no_recoil.lua')
 
 import('/visuals/esp.lua')
+import('/visuals/balistics_tracker.lua')
 
 import('/ui/lib.lua')
 import('/ui/load_window.lua')
